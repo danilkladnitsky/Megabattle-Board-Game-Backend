@@ -1,15 +1,10 @@
 const express = require('express');
 const app = express();
-const http = require('http');
-const server = http.createServer(app);
-const io = require('socket.io')(server)
-app.get('/', (req, res) => {
-  res.send('<h1>Hello world</h1>');
-});
-io.on('connection', (socket) => {
-  console.log('a user connected');
-});
-
-server.listen(4000, () => {
-  console.log('listening on *:4000');
-});
+const io = require('socket.io')();
+let cors = require("cors")
+app.use(cors())
+const port = 4000;
+app.io = io;
+require('./routes')(app, {});
+const socket = require('./socket')(io, {})
+app.listen(port, () => console.log('Express Server Now Running On localhost:4000'));
