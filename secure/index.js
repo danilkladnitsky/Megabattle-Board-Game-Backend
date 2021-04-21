@@ -13,6 +13,10 @@ module.exports = {
     return jwt.sign(data, TOKEN_SECRET, { expiresIn: '1800s' });
   },
 
+  generateMasterToken: function() {
+    return jwt.sign({user: "admin"}, TOKEN_SECRET, { expiresIn: '259200s' });
+  },
+
   authenticateToken: function(args) {
     return new Promise((resolve, reject) => {
       if (args.token == null){
