@@ -10,6 +10,13 @@ module.exports = function(app) {
     app.io.emit("stream", cmd);
     res.send(cmd)
   });
+  app.get('/topic', function(req, res) {
+    let cmd; 
+    if(req.query.message != undefined && req.query.message != "")
+      cmd = {message: req.query.message};
+    app.io.emit("topic", cmd);
+    res.send(cmd)
+  });
 }
-
+ 
 

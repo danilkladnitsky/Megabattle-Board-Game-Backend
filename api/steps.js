@@ -14,7 +14,6 @@ module.exports = {
           console.log(err)
         } else {
           io.emit(context, res.rows)
-          output.send(res.rows)
         }
       })
     })
