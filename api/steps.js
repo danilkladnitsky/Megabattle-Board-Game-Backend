@@ -8,7 +8,7 @@ const pool = new Pool(settings.pool_settings)
 module.exports = {
   _getSteps: function (args, output, io, context) {
     return new Promise((resolve, reject) => {
-      let request = "SELECT * FROM steps";
+      let request = "SELECT * FROM steps ORDER BY id";
       pool.query(request, (err, res) => {
         if (err) {
           console.log(err)
