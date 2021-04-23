@@ -10,8 +10,8 @@ app.use(cors())
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
-const port = 4000;
+const port = 3000;
 app.io = io;
 require('./routes')(app, {});
 const socket = require('./socket')(io, {})
-app.listen(port, () => console.log('Express Server Now Running On localhost:4000'));
+app.listen(port, () => console.log('Express Server Now Running On localhost:3000'));
