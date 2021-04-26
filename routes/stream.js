@@ -6,7 +6,7 @@ module.exports = function(app) {
       cmd = {message: req.query.message, time: "time", post_id: id};
 
       id++;
-
+      console.log("message was sent: " + req.query.message)
     app.io.emit("stream", cmd);
     res.send(cmd)
   });
@@ -14,6 +14,7 @@ module.exports = function(app) {
     let cmd; 
     if(req.query.message != undefined && req.query.message != "")
       cmd = {message: req.query.message};
+      console.log("topic was sent: " + req.query.message)
     app.io.emit("topic", cmd);
     res.send(cmd)
   });

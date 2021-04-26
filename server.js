@@ -7,7 +7,8 @@ app.use(express.static(path.join(__dirname,  "build")));
 app.use(express.static("public"));
 app.use(cors())
 
-app.use((req, res, next) => {
+
+app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
 const port = 3000;
